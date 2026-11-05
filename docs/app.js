@@ -2840,19 +2840,8 @@
   }
 
   // ---- repository links ----
-  // On <owner>.github.io/<repo>/, point the GitHub and issue links at that repository.
-  // Elsewhere they keep index.html's links.
-  (function linkRepository() {
-    var host = /^([a-z0-9-]+)\.github\.io$/i.exec(location.hostname);
-    if (!host) return;
-    var first = location.pathname.split('/').filter(Boolean)[0];
-    var repo  = first && !/\.html?$/i.test(first) ? first : host[1] + '.github.io';
-    var url   = 'https://github.com/' + host[1] + '/' + repo;
-    var gh = document.getElementById('link-github');
-    var issues = document.getElementById('link-issues');
-    if (gh) gh.href = url;
-    if (issues) issues.href = url + '/issues';
-  })();
+  // The GitHub and issue links are fixed in index.html / help.html
+  // (https://github.com/ailab-mju/ExCas-Analyzer); nothing rewrites them at runtime.
 
   // ---- public API ----
   // Everything above is private to this closure. These are the entry points for the

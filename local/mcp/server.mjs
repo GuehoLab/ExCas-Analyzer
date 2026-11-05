@@ -414,22 +414,32 @@ register({
         lines = (await readAt(from, window)).text.split('\n');
         // a window that starts mid-file probably starts mid-line
         if (!whole) lines.shift();
+        // a final newline ends the last line; it does not start an empty one
+        if (lines[lines.length - 1] === '') lines.pop();
         take = lines.slice(Math.max(0, lines.length - a.tail_lines));
       } else {
         lines = (await readAt(0, window)).text.split('\n');
         if (!whole) lines.pop();
+        // as above; only a window that reaches the end of the file can end in one
+        else if (lines[lines.length - 1] === '') lines.pop();
         take = lines.slice(0, a.head_lines);
       }
       let text = take.join('\n');
       const clipped = text.length > cap;
-      if (clipped) text = text.slice(0, cap);
+      // a cut keeps the end of a tail, the start of a head
+      if (clipped) text = a.tail_lines ? text.slice(-cap) : text.slice(0, cap);
+      // after a cut, only the lines the text still holds, the one at the cut perhaps partial;
+      // a newline right at the cut starts or ends no line
+      const atCut = a.tail_lines ? text.startsWith('\n') : text.endsWith('\n');
+      const returned = clipped ? text.split('\n').length - (atCut ? 1 : 0) : take.length;
       return {
         file: a.file,
         bytes_total: st.size,
         // known only when the window covered the whole file
         lines_total: whole ? lines.length : null,
-        lines_returned: take.length,
-        truncated: clipped || take.length < wanted,
+        lines_returned: returned,
+        // fewer lines than asked is a cut only when the window missed part of the file
+        truncated: clipped || (!whole && take.length < wanted),
         text
       };
     }

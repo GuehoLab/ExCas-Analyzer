@@ -46,7 +46,7 @@ It compares a Cas9-treated sample with an untreated control, runs entirely in th
 No installation is needed to use the web page. To run the page and the MCP server locally:
 
 ```bash
-git clone https://github.com/{owner}/ExCas-Analyzer
+git clone https://github.com/ailab-mju/ExCas-Analyzer
 cd ExCas-Analyzer
 npm run serve        # web page at http://localhost:8080
 npm run mcp          # MCP server

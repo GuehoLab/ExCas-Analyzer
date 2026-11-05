@@ -30,7 +30,7 @@
     <div class="d-flex align-items-center gap-3 small nav-links">
       <a href="help.html" aria-current="page"><i class="bi bi-question-circle"></i> Help</a>
       <a target="_blank" rel="noopener" href="#"><i class="bi bi-journal-text"></i> Paper</a>
-      <a id="link-github" target="_blank" rel="noopener" href="https://github.com/"><i class="bi bi-github"></i> GitHub</a>
+      <a id="link-github" target="_blank" rel="noopener" href="https://github.com/ailab-mju/ExCas-Analyzer"><i class="bi bi-github"></i> GitHub</a>
       <span class="text-secondary">ver.0</span>
     </div>
   </div>
@@ -487,25 +487,10 @@
       the software under
       <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPL-3.0</a>.</p>
     <p class="mb-0 text-muted">
-      <a id="link-issues" href="https://github.com/" target="_blank" rel="noopener">Report an issue</a>
+      <a id="link-issues" href="https://github.com/ailab-mju/ExCas-Analyzer/issues" target="_blank" rel="noopener">Report an issue</a>
     </p>
   </div>
 </footer>
 
-<script>
-  // On <owner>.github.io/<repo>/, point the GitHub and issue links at that repository,
-  // as app.js does on the main page. Elsewhere they keep the links above.
-  (function linkRepository() {
-    var host = /^([a-z0-9-]+)\.github\.io$/i.exec(location.hostname);
-    if (!host) return;
-    var first = location.pathname.split('/').filter(Boolean)[0];
-    var repo  = first && !/\.html?$/i.test(first) ? first : host[1] + '.github.io';
-    var url   = 'https://github.com/' + host[1] + '/' + repo;
-    var gh = document.getElementById('link-github');
-    var issues = document.getElementById('link-issues');
-    if (gh) gh.href = url;
-    if (issues) issues.href = url + '/issues';
-  })();
-</script>
 </body>
 </html>
