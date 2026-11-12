@@ -125,8 +125,8 @@
 
       <h3><span class="help-step">Step 3.</span> Read the results</h3>
       <p>The results start with the summary table, then Figures 1–7. In the example, the
-        Cas9-treated sample has 1,168 pairs used in the analysis: 15.2% wild type, 17.9% small
-        insertions, 19.8% small deletions and 41.8% large deletions. The control is 87.7% wild
+        Cas9-treated sample has 1,077 pairs used in the analysis: 16.5% wild type, 19.4% small
+        insertions, 21.4% small deletions and 36.9% large deletions. The control is 95.3% wild
         type. <a href="#interpreting">Interpreting the results</a> explains each part.</p>
 
       <h3><span class="help-step">Step 4.</span> Save the result files</h3>
@@ -136,7 +136,7 @@
         to the form; <strong>Reset</strong> clears it.</p>
       <figure class="help-figure mb-0">
         <img src="help/result-files.png" width="1434" height="176" loading="lazy"
-             alt="The Result Files section with Download all and Individual files buttons and the zip HPRT1_SIM.zip, 13 files, 2.3 MB">
+             alt="The Result Files section with Download all and Individual files buttons and the zip HPRT1_SIM.zip, 13 files, 1.8 MB">
         <figcaption>One zip per sample; the size shown is before compression.</figcaption>
       </figure>
     </div>
@@ -241,18 +241,18 @@
         <li><strong>Reads used in analysis:</strong> the pairs that can be classified, which are
           the pairs spanning the cleavage site plus the large-deletion pairs. It is the sum of the
           six classes and the denominator of their percentages. In a long amplicon it is far
-          smaller than the aligned pairs (here 1,168 of 38,172), because most pairs lie away from
+          smaller than the aligned pairs (here 1,077 of 38,167), because most pairs lie away from
           the cut and say nothing about it.</li>
         <li><strong>WT … TermIns:</strong> each class's pairs, as a share of Reads used.</li>
       </ul>
       <p><strong>Compare the treated row with the control row.</strong> The control shows the
         background from sequencing errors and PCR: a class at a similar level in both rows is not
-        evidence of editing. In the example, substitutions are 3.6% of the control and 0.7% of the
+        evidence of editing. In the example, substitutions are 3.9% of the control and 0.7% of the
         treated sample, so they are background, while small indels and large deletions appear
         only in the treated sample.</p>
       <p class="mb-0"><strong>Editing efficiency.</strong> The share of pairs that are not WT is
-        the report's <em>Edited</em> figure (84.8% in the example). It includes substitutions and
-        terminal insertions, so read it against the control (12.3% not WT here), or add up only
+        the report's <em>Edited</em> figure (83.5% in the example). It includes substitutions and
+        terminal insertions, so read it against the control (4.7% not WT here), or add up only
         the classes you count as edits.</p>
 
       <h3 id="large-deletions">5.3 Large deletions and the control</h3>
@@ -271,7 +271,7 @@
           2 kb. The note under Figure 2 says which test ran.</li>
         <li><strong>What is left out:</strong> the removed pairs are not in Reads used. Their count
           is in <code>mutation_summary.tsv</code> as <code>large_deletion_common_excluded</code>
-          (235 in the example), and their reads are in <code>mut_common.sam</code>. The same
+          (0 in the example), and their reads are in <code>mut_common.sam</code>. The same
           applies the other way round to the control row.</li>
         <li><strong>Size limit:</strong> deletions whose read ends lie more than
           <em>Cleavage-site tolerance</em> (8,000 bp by default) from the cut are not called.</li>
@@ -317,7 +317,8 @@
         spanning the base (grey); insertions are in the lower panel, on their own scale. The blue
         bar on top marks the ±13 bp window. A wild-type position is one colour, the reference
         base. It draws every read in the SAM files, including the large deletions also found in
-        the control, so it covers more pairs than Reads used (1,403 in the example). With fewer
+        the control, so it can cover more pairs than Reads used (in the example none are removed,
+        so both are 1,077). With fewer
         than 100 reads at a base, the note warns that the percentages are not stable.</p>
 
       <figure class="help-figure">
@@ -354,7 +355,8 @@
         <figcaption>The top of the viewer; it lists every pair of the track.</figcaption>
       </figure>
       <p><strong>Figure 7. Alignment viewer:</strong> the reads of one SAM file at a time, picked
-        with the buttons above it (each with its pair count):</p>
+        with the buttons above it (each with its pair count; a file with no pairs gets no button,
+        as <em>Common (removed)</em> in the example):</p>
       <ul>
         <li><em>Treated-only large deletions</em> (<code>mut_only.sam</code>), judged CRISPR-induced</li>
         <li><em>Common (removed)</em> (<code>mut_common.sam</code>), also in the control</li>
