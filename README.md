@@ -115,28 +115,28 @@ node local/mcp/server.mjs
 
 ### Example 1: Web page
 
-- Click **Load example · HPRT1**, then **Submit**
-- Runs a simulated HPRT1 amplicon (40,115 read pairs per sample)
+- Click **Load example**, then **Submit**
+- Runs reads simulated on a 5,899 bp TRAC amplicon (53,363 read pairs per sample); about 10–20 seconds
 - Results appear on the page; **Download all** saves the result files as one zip, `{gene}_{sample}.zip`
-- The output of this run is in `docs/example/`: `HPRT1_SIM_report.html` and `HPRT1_SIM.zip`
+- The output of this run is in `docs/example/`: `TRAC_SIM_report.html` and `TRAC_SIM.zip`
 
 ### Example 2: MCP server
 
 ```jsonc
 // locate_target
-{ "reference": "docs/testdata/HPRT1/HPRT1.fa", "target_sequence": "AGCCCCCCTTGAGCACACAG", "pam": "NGG" }
+{ "reference": "docs/testdata/Sample/TRAC.fa", "target_sequence": "AGAGCAACAGTGCTGTGGCC", "pam": "NGG" }
 
 // run_analysis
-{ "reference": "docs/testdata/HPRT1/HPRT1.fa", "target_sequence": "AGCCCCCCTTGAGCACACAG",
-  "control_r1": "docs/testdata/HPRT1/HPRT1_con_1.fastq.gz",
-  "control_r2": "docs/testdata/HPRT1/HPRT1_con_2.fastq.gz",
-  "treated_r1": "docs/testdata/HPRT1/HPRT1_mut_1.fastq.gz",
-  "treated_r2": "docs/testdata/HPRT1/HPRT1_mut_2.fastq.gz",
-  "gene": "HPRT1", "sample": "EXP1" }
+{ "reference": "docs/testdata/Sample/TRAC.fa", "target_sequence": "AGAGCAACAGTGCTGTGGCC",
+  "control_r1": "docs/testdata/Sample/TRAC_SIM_ctr_1.fastq.gz",
+  "control_r2": "docs/testdata/Sample/TRAC_SIM_ctr_2.fastq.gz",
+  "treated_r1": "docs/testdata/Sample/TRAC_SIM_mut_1.fastq.gz",
+  "treated_r2": "docs/testdata/Sample/TRAC_SIM_mut_2.fastq.gz",
+  "gene": "TRAC", "sample": "EXP1" }
 ```
 
 - Uses the same example data as the web page
-- `locate_target` returns target 4653–4672, strand −, cleavage offset 3, cut site 4656
+- `locate_target` returns target 2953–2972, strand +, cleavage offset 17, cut site 2970
 - `run_analysis` saves the run in `local/mcp/runs/{run_id}/`
 - Returns the run ID, the summary table, headline rates and the files written
 
@@ -246,10 +246,10 @@ MCP runs also save:
 docs/                 web page served by GitHub Pages
   help.html           help page: tutorial, how to read the results, licences
   help/               the help page's screenshots
-  example/            the HPRT1 example's output (report and zip), linked from the help page
+  example/            the example's output (TRAC_SIM report and zip), linked from the help page
   kmer_align.wasm     the analysis core (WebAssembly)
   report-en.js        puts the core's HTML report into English
-  testdata/HPRT1/     example data for Load example
+  testdata/Sample/    example data for Load example (simulated TRAC amplicon)
   .nojekyll           GitHub Pages serves the files as they are
 local/                files for running locally
   serve.mjs           local web server for docs/

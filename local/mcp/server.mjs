@@ -363,7 +363,7 @@ register({
     type: 'object',
     properties: {
       run_id: { type: 'string', description: 'A run_id from run_analysis or list_runs.' },
-      file: { type: 'string', description: 'A file name from the run, e.g. HPRT1_MCP_mutation_summary.tsv.' },
+      file: { type: 'string', description: 'A file name from the run, e.g. TRAC_MCP_mutation_summary.tsv.' },
       head_lines: { type: 'integer', description: 'Return this many lines from the start.' },
       tail_lines: { type: 'integer', description: 'Return this many lines from the end.' },
       offset: { type: 'integer', default: 0, description: 'Byte to start from (when not using head_lines / tail_lines).' },

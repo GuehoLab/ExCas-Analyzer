@@ -52,7 +52,7 @@
       <div class="section-title mb-2">Contents</div>
       <ol>
         <li><a href="#overview">Overview</a></li>
-        <li><a href="#tutorial">Tutorial: the HPRT1 example</a></li>
+        <li><a href="#tutorial">Tutorial: the example</a></li>
         <li><a href="#sample-output">Sample output</a></li>
         <li><a href="#own-data">Preparing your own data</a></li>
         <li><a href="#interpreting">Interpreting the results</a>
@@ -88,36 +88,36 @@
 
     <!-- 2. Tutorial -->
     <div class="app-card p-3 p-md-4 mb-3">
-      <h2 id="tutorial">2. Tutorial: the HPRT1 example</h2>
-      <p>The page comes with a simulated example: a 9,411 bp amplicon of <em>HPRT1</em>, an
-        SpCas9 target, and 40,115 read pairs each for an untreated control and a Cas9-treated
-        sample named SIM. It takes a few seconds to run.</p>
+      <h2 id="tutorial">2. Tutorial: the example</h2>
+      <p>The page comes with a simulated example: reads simulated on a 5,899 bp amplicon of the
+        <em>TRAC</em> locus, an SpCas9 target, and 53,363 read pairs each for an untreated control
+        and a Cas9-treated sample named SIM. It takes about 10–20 seconds to run.</p>
 
       <h3><span class="help-step">Step 1.</span> Load the example</h3>
-      <p>On the <a href="index.html">main page</a>, click <strong>Load example · HPRT1</strong>
+      <p>On the <a href="index.html">main page</a>, click <strong>Load example</strong>
         at the bottom of the form. It fills in the four FASTQ files, the sample name, the
-        reference sequence, the PAM (SpCas9, NGG), the target (AGCCCCCCTTGAGCACACAG) and the
+        reference sequence, the PAM (SpCas9, NGG), the target (AGAGCAACAGTGCTGTGGCC) and the
         gene name. <strong>Download example</strong> saves the same input files, so you can
         look at them or upload them yourself.</p>
       <figure class="help-figure">
-        <img src="help/step1-sequencing-data.png" width="1434" height="695" loading="lazy"
+        <img src="help/step1-sequencing-data.png" width="1434" height="696" loading="lazy"
              alt="The Sequencing Data section with the example's control and Cas9-treated FASTQ files filled in and the sample name SIM">
         <figcaption>The control's Read 1 and Read 2 on the left; each Cas9-treated sample, with its
           name and its reads, on the right.</figcaption>
       </figure>
       <figure class="help-figure">
-        <img src="help/step1-basic-information.png" width="1434" height="990" loading="lazy"
-             alt="The Basic Information section with the HPRT1 reference, the SpCas9 NGG PAM, the target sequence and the gene name, above the Load example, Reset and Submit buttons">
+        <img src="help/step1-basic-information.png" width="1434" height="989" loading="lazy"
+             alt="The Basic Information section with the TRAC reference, the SpCas9 NGG PAM, the target sequence and the gene name, above the Load example, Reset and Submit buttons">
         <figcaption>Reference, PAM, target and gene name. Detailed options stay at their defaults.</figcaption>
       </figure>
 
       <h3><span class="help-step">Step 2.</span> Submit and follow the progress</h3>
       <p>Click <strong>Submit</strong>. The page first shows where it found the target: here
-        positions 4,653–4,672 on the reverse strand, with the cleavage site at 4,656 (the first
+        positions 2,953–2,972 on the forward strand, with the cleavage site at 2,970 (the first
         base after the cut). Check this before waiting for the results. The bars then follow the
         alignment of each sample and the result files being written.</p>
       <figure class="help-figure">
-        <img src="help/step2-progress.png" width="1434" height="669" loading="lazy"
+        <img src="help/step2-progress.png" width="1434" height="672" loading="lazy"
              alt="The Analysis Progress page showing the target, PAM and cleavage site in the reference, a table of their coordinates, and progress bars">
         <figcaption>Target (green), PAM (yellow) and cleavage site (red triangle), with the
           coordinates used.</figcaption>
@@ -125,18 +125,18 @@
 
       <h3><span class="help-step">Step 3.</span> Read the results</h3>
       <p>The results start with the summary table, then Figures 1–7. In the example, the
-        Cas9-treated sample has 1,077 pairs used in the analysis: 16.5% wild type, 19.4% small
-        insertions, 21.4% small deletions and 36.9% large deletions. The control is 95.3% wild
+        Cas9-treated sample has 2,423 pairs used in the analysis: 16.9% wild type, 21.8% small
+        insertions, 23.6% small deletions and 31.4% large deletions. The control is 94.8% wild
         type. <a href="#interpreting">Interpreting the results</a> explains each part.</p>
 
       <h3><span class="help-step">Step 4.</span> Save the result files</h3>
       <p><strong>Download all</strong> saves each sample's result files as one zip, here
-        <code>HPRT1_SIM.zip</code>. <strong>Individual files</strong> lists the zips, to save one
+        <code>TRAC_SIM.zip</code>. <strong>Individual files</strong> lists the zips, to save one
         sample at a time. <strong>New analysis</strong>, at the bottom of the results, goes back
         to the form; <strong>Reset</strong> clears it.</p>
       <figure class="help-figure mb-0">
-        <img src="help/result-files.png" width="1434" height="176" loading="lazy"
-             alt="The Result Files section with Download all and Individual files buttons and the zip HPRT1_SIM.zip, 13 files, 1.8 MB">
+        <img src="help/result-files.png" width="1434" height="172" loading="lazy"
+             alt="The Result Files section with Download all and Individual files buttons and the zip TRAC_SIM.zip, 13 files, 3.8 MB">
         <figcaption>One zip per sample; the size shown is before compression.</figcaption>
       </figure>
     </div>
@@ -144,20 +144,20 @@
     <!-- 3. Sample output -->
     <div class="app-card p-3 p-md-4 mb-3">
       <h2 id="sample-output">3. Sample output</h2>
-      <p>The output of the HPRT1 example, run with the default options:</p>
+      <p>The output of the example, run with the default options:</p>
       <ul>
-        <li><a href="example/HPRT1_SIM_report.html" target="_blank" rel="noopener">HPRT1_SIM_report.html</a>
+        <li><a href="example/TRAC_SIM_report.html" target="_blank" rel="noopener">TRAC_SIM_report.html</a>
           — the standalone HTML report; opens in the browser</li>
-        <li><a href="example/HPRT1_SIM.zip" download>HPRT1_SIM.zip</a>
-          (425 KB) — all 13 result files: the summary tables, the report and the SAM files</li>
+        <li><a href="example/TRAC_SIM.zip" download>TRAC_SIM.zip</a>
+          (648 KB) — all 13 result files: the summary tables, the report and the SAM files</li>
       </ul>
       <p>And its input, the files that <strong>Load example</strong> uses:</p>
       <ul>
-        <li><a href="testdata/HPRT1/HPRT1.fa" download>HPRT1.fa</a> — the reference</li>
-        <li><a href="testdata/HPRT1/HPRT1_con_1.fastq.gz" download>HPRT1_con_1.fastq.gz</a>,
-          <a href="testdata/HPRT1/HPRT1_con_2.fastq.gz" download>HPRT1_con_2.fastq.gz</a> — the control</li>
-        <li><a href="testdata/HPRT1/HPRT1_mut_1.fastq.gz" download>HPRT1_mut_1.fastq.gz</a>,
-          <a href="testdata/HPRT1/HPRT1_mut_2.fastq.gz" download>HPRT1_mut_2.fastq.gz</a> — the Cas9-treated sample</li>
+        <li><a href="testdata/Sample/TRAC.fa" download>TRAC.fa</a> — the reference</li>
+        <li><a href="testdata/Sample/TRAC_SIM_ctr_1.fastq.gz" download>TRAC_SIM_ctr_1.fastq.gz</a>,
+          <a href="testdata/Sample/TRAC_SIM_ctr_2.fastq.gz" download>TRAC_SIM_ctr_2.fastq.gz</a> — the control</li>
+        <li><a href="testdata/Sample/TRAC_SIM_mut_1.fastq.gz" download>TRAC_SIM_mut_1.fastq.gz</a>,
+          <a href="testdata/Sample/TRAC_SIM_mut_2.fastq.gz" download>TRAC_SIM_mut_2.fastq.gz</a> — the Cas9-treated sample</li>
       </ul>
       <p class="mb-0">Running the example yourself gives the same files, apart from the date in
         the report. The reads are simulated, so the numbers show how the output looks, not the
@@ -229,9 +229,9 @@
 
       <h3 id="table1">5.2 Summary table (Table 1)</h3>
       <figure class="help-figure">
-        <img src="help/result-table1-figure1.png" width="1434" height="1004" loading="lazy"
+        <img src="help/result-table1-figure1.png" width="1434" height="1010" loading="lazy"
              alt="Table 1 with Control and Cas9-treated rows, and Figure 1, a bar chart of all and aligned read pairs per sample">
-        <figcaption>Table 1 and Figure 1 for the HPRT1 example.</figcaption>
+        <figcaption>Table 1 and Figure 1 for the example.</figcaption>
       </figure>
       <ul>
         <li><strong>Total reads:</strong> read pairs in the FASTQ files.</li>
@@ -241,18 +241,18 @@
         <li><strong>Reads used in analysis:</strong> the pairs that can be classified, which are
           the pairs spanning the cleavage site plus the large-deletion pairs. It is the sum of the
           six classes and the denominator of their percentages. In a long amplicon it is far
-          smaller than the aligned pairs (here 1,077 of 38,167), because most pairs lie away from
+          smaller than the aligned pairs (here 2,423 of 50,268), because most pairs lie away from
           the cut and say nothing about it.</li>
         <li><strong>WT … TermIns:</strong> each class's pairs, as a share of Reads used.</li>
       </ul>
       <p><strong>Compare the treated row with the control row.</strong> The control shows the
         background from sequencing errors and PCR: a class at a similar level in both rows is not
-        evidence of editing. In the example, substitutions are 3.9% of the control and 0.7% of the
+        evidence of editing. In the example, substitutions are 4.6% of the control and 1.0% of the
         treated sample, so they are background, while small indels and large deletions appear
         only in the treated sample.</p>
       <p class="mb-0"><strong>Editing efficiency.</strong> The share of pairs that are not WT is
-        the report's <em>Edited</em> figure (83.5% in the example). It includes substitutions and
-        terminal insertions, so read it against the control (4.7% not WT here), or add up only
+        the report's <em>Edited</em> figure (83.1% in the example). It includes substitutions and
+        terminal insertions, so read it against the control (5.2% not WT here), or add up only
         the classes you count as edits.</p>
 
       <h3 id="large-deletions">5.3 Large deletions and the control</h3>
@@ -284,7 +284,7 @@
       <ul class="mb-0">
         <li><strong>Clip rescue</strong> (on by default) re-calls a soft clip within 13 bp of a read
           end as a small indel when the same allele is seen with full anchors in at least 3 pairs
-          of the sample. The note under Figure 2 gives how many were re-called (33 of 87 in the
+          of the sample. The note under Figure 2 gives how many were re-called (68 of 194 in the
           treated example). The rest stay TermIns.</li>
         <li><strong>With / Without TermIns</strong>, above the summary table, decides whether those
           pairs count. Without them, they leave Reads used, and the other classes, the figures,
@@ -302,7 +302,7 @@
         close; a large gap means many unmapped pairs.</p>
 
       <figure class="help-figure">
-        <img src="help/result-figure2.png" width="1434" height="643" loading="lazy"
+        <img src="help/result-figure2.png" width="1434" height="642" loading="lazy"
              alt="Figure 2, two pie charts of the mutation classes, control and Cas9-treated">
       </figure>
       <p><strong>Figure 2. Mutation patterns:</strong> the six classes of Table 1 as pies, one per
@@ -318,7 +318,7 @@
         bar on top marks the ±13 bp window. A wild-type position is one colour, the reference
         base. It draws every read in the SAM files, including the large deletions also found in
         the control, so it can cover more pairs than Reads used (in the example none are removed,
-        so both are 1,077). With fewer
+        so both are 2,423). With fewer
         than 100 reads at a base, the note warns that the percentages are not stable.</p>
 
       <figure class="help-figure">
@@ -342,7 +342,7 @@
         mate gaps (light pink). Deletions also found in the control are left out, as in Table 1.</p>
 
       <figure class="help-figure">
-        <img src="help/result-figure6.png" width="1434" height="634" loading="lazy"
+        <img src="help/result-figure6.png" width="1434" height="633" loading="lazy"
              alt="Figure 6, lollipop charts of mean insertion and deletion length by reference position">
       </figure>
       <p><strong>Figure 6. Indel size by position:</strong> the mean length of the indels at each
@@ -350,7 +350,7 @@
         grey for split-read deletions spanning the base.</p>
 
       <figure class="help-figure">
-        <img src="help/result-figure7.png" width="1434" height="1250" loading="lazy"
+        <img src="help/result-figure7.png" width="1434" height="1249" loading="lazy"
              alt="Figure 7, the alignment viewer showing treated-only large deletions as reads joined by red lines across the cleavage site">
         <figcaption>The top of the viewer; it lists every pair of the track.</figcaption>
       </figure>
@@ -397,7 +397,7 @@
             <tr><td><code>report.html</code></td><td>The standalone report (<a href="#report">5.8</a>).</td></tr>
             <tr><td><code>report.tsv</code></td><td>The run's parameters, the count of each class,
               and the length histograms behind the report. Its coordinates are the core's, 0-based:
-              <code>targetst 4652</code> is position 4,653.</td></tr>
+              <code>targetst 2952</code> is position 2,953.</td></tr>
             <tr><td><code>mut_only.sam</code>, <code>ctr_only.sam</code></td><td>Large deletions found
               only in that sample.</td></tr>
             <tr><td><code>mut_common.sam</code>, <code>ctr_common.sam</code></td><td>Large deletions
@@ -420,7 +420,7 @@
         fewer files.</p>
 
       <h3 id="report">5.8 The HTML report</h3>
-      <p>The report (<a href="example/HPRT1_SIM_report.html" target="_blank" rel="noopener">example</a>)
+      <p>The report (<a href="example/TRAC_SIM_report.html" target="_blank" rel="noopener">example</a>)
         opens offline in any browser and is in English. Its sections:</p>
       <ul class="mb-0">
         <li><strong>Summary:</strong> aligned pairs; pairs classified (spanning the cut site);

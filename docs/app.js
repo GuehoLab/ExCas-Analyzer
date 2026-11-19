@@ -629,18 +629,26 @@
     return errs;
   }
 
-  // ---- example data: the bundled HPRT1 set, or a synthetic one ----
+  // ---- example data: the bundled TRAC set, or a synthetic one ----
 
-  // The bundled example is a simulated HPRT1 amplicon.
+  // The bundled example is a simulated TRAC amplicon, in testdata/<dir>/.
   var EXAMPLE = {
-    gene:   'HPRT1',
+    gene:   'TRAC',
     sample: 'SIM',
-    target: 'AGCCCCCCTTGAGCACACAG',   // sgRNA spacer, minus strand, NGG PAM
+    target: 'AGAGCAACAGTGCTGTGGCC',   // sgRNA spacer, plus strand, NGG PAM (TGG)
+    dir:    'Sample',
+    files:  {
+      ref:   'TRAC.fa',
+      ctrR1: 'TRAC_SIM_ctr_1.fastq.gz',
+      ctrR2: 'TRAC_SIM_ctr_2.fastq.gz',
+      mutR1: 'TRAC_SIM_mut_1.fastq.gz',
+      mutR2: 'TRAC_SIM_mut_2.fastq.gz'
+    },
     // synthetic fallback only: target + pam go on the plus strand, with the cut before
     // 0-based index `cut`
     pam:    'TGG',
-    cut:    4654,
-    refLen: 9411
+    cut:    2969,
+    refLen: 5899
   };
 
   // ---- synthetic fallback ----
@@ -728,17 +736,13 @@
 
   // Fetches the bundled example. On any failure it resolves to the synthetic one instead;
   // it never rejects.
-  function fetchExample(gene) {
-    var base = 'testdata/' + gene + '/';
+  function fetchExample() {
+    var base = 'testdata/' + EXAMPLE.dir + '/';
     // Reads are gzipped, like a real .fastq.gz upload. The reference is plain text, read
     // straight into the sequence box.
-    var want = [
-      { url: base + gene + '.fa',             key: 'ref'   },
-      { url: base + gene + '_con_1.fastq.gz', key: 'ctrR1' },
-      { url: base + gene + '_con_2.fastq.gz', key: 'ctrR2' },
-      { url: base + gene + '_mut_1.fastq.gz', key: 'mutR1' },
-      { url: base + gene + '_mut_2.fastq.gz', key: 'mutR2' }
-    ];
+    var want = ['ref', 'ctrR1', 'ctrR2', 'mutR1', 'mutR2'].map(function (key) {
+      return { url: base + EXAMPLE.files[key], key: key };
+    });
 
     if (typeof fetch !== 'function' || location.protocol === 'file:') {
       console.warn('[app.js] cannot fetch example data over ' + location.protocol +
@@ -809,7 +813,7 @@
     if (demoNote) demoNote.textContent = 'Loading example data…';
     if (submitBtn) submitBtn.disabled = true;
 
-    return fetchExample(gene).then(function (loaded) {
+    return fetchExample().then(function (loaded) {
       return new Promise(function (resolve, reject) {
         var reader = new FileReader();
         reader.onload = function () {
@@ -857,7 +861,7 @@
     clearError();
     if (demoNote) demoNote.textContent = 'Preparing example download…';
 
-    return fetchExample(gene).then(function (loaded) {
+    return fetchExample().then(function (loaded) {
       ['ref', 'ctrR1', 'ctrR2', 'mutR1', 'mutR2'].forEach(function (k, i) {
         if (loaded[k]) setTimeout(function () { saveBlob(loaded[k], loaded[k].name); }, i * 250);
       });
